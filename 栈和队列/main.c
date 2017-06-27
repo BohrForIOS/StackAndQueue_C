@@ -31,15 +31,44 @@ int main(int argc, const char * argv[]) {
 //    conversion();
     
     //匹配括号
-    SqList sqList = {.data = {'[', '(', ')','(', '[',']', ')', ']'},
-        .length = 8};
-    if (MatchCheck(sqList)) {
-        printf("匹配成功");
-    }
-    else {
-         printf("匹配失败");
+//    SqList sqList = {.data = {'[', '(', ')','(', '[',']', ')', ']'},
+//        .length = 8};
+//    if (MatchCheck(sqList)) {
+//        printf("匹配成功");
+//    }
+//    else {
+//         printf("匹配失败");
+//    }
+//    
+//    // 走迷宫
+//    PosType start = {.x = 1, .y = 1};
+//    PosType end = {.x = 8, .y = 8};
+//    Status success =  MazePath(start, end);
+//    
+//    if (success) {
+//        printf("走出迷宫成功");
+//    }
+//    else {
+//        printf("迷宫不能走出");
+//    }
+    SeqStack *seqStack = (SeqStack *)malloc(sizeof(seqStack));
+    
+    if (!seqStack) {
+        printf("分配空间失败");
     }
     
+    seqStack->top = -1;
+    
+    SeqStackchar *seqStackChar = (SeqStackchar *)malloc(sizeof(SeqStackchar));
+    
+    if (!seqStackChar) {
+        printf("分配空间失败");
+    }
+    
+    seqStackChar->top = -1;
+    
+    int resultValue =  result(seqStack, seqStackChar);
+    printf("计算结果为%d\n", resultValue);
     
     
     return 0;

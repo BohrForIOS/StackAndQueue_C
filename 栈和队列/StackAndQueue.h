@@ -65,7 +65,7 @@ typedef struct {
 typedef struct {
     int ord;      //通道块在路径上的“序号”
     PosType seat; //通道块在迷宫中的“坐标位置”
-    int di;       //从此通道块走向下一通道块的“方向”, //1:东 2:北 3:西 （顺时针)
+    int di;       //从此通道块走向下一通道块的“方向”, //1:东 2:南 3:西 4:北（顺时针)
 }MazeType;
 
 /**
@@ -77,19 +77,35 @@ typedef struct {
     int stacksize;
 }MazeStack;
 
-// 迷宫
-int mazeMap[10][10] =
-{  //0,1,2,3,4,5,6,7,8,9
-    {0,0,0,0,0,0,0,0,0,0}, //0
-    {0,1,1,0,1,1,1,0,1,0}, //1
-    {0,1,1,0,1,1,1,0,1,0}, //2
-    {0,1,1,1,1,0,0,1,1,0}, //3
-    {0,1,0,0,0,1,1,1,1,0}, //4
-    {0,1,1,1,0,1,1,1,1,0}, //5
-    {0,1,0,1,1,1,0,1,1,0}, //6
-    {0,1,0,0,0,1,0,0,1,0}, //7
-    {0,0,1,1,1,1,1,1,1,0}, //8
-    {0,0,0,0,0,0,0,0,0,0}  //9
-};
+
+
+Status Pass(PosType pos);
+void FootPrint(PosType pos);
+PosType NextPos(PosType curPos, int *i);
+void MakePrint(PosType pos);
+Status MazePath(PosType start, PosType end);
+void printfMazePath(MazeStack *s);
+
+#pragma 多项式求值
+//定义两个栈，一个存放数字，一个存放符号；
+
+//定义存储整型的栈
+typedef struct node
+{
+    int data[MAXSIZE];
+    int top;
+}SeqStack;
+//定义存储字符型的栈
+typedef struct nodeb
+{
+    char data[MAXSIZE];
+    int top;
+}SeqStackchar;
+
+int GetPriorityOfOperator(char c);
+//运算a，b
+int calculate(int a, int b, char operator);
+int calculationBtweenStack(SeqStack *a, SeqStackchar *b);
+int result(SeqStack *numStack, SeqStackchar *operatorStack);
 
 #endif /* StackAndQueue_h */
