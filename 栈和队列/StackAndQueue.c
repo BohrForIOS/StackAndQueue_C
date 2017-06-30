@@ -38,6 +38,18 @@ int mazeMap[10][10] =
 
 #pragma mark - 顺序栈的基本操作
 
+SqStack createStack_Sq() {
+    SqStack *s = (SqStack *)malloc(sizeof(SqStack));
+    
+    if (!s) {
+        printf("申请空间失败");
+    }
+    
+    InitStack(s);
+    
+    return *s;
+}
+
 // 初始化
 Status InitStack(SqStack *s) {
     s->base = (SElemType *)malloc(STACK_INIT_SIZE * sizeof(SElemType));
@@ -83,11 +95,11 @@ Status Push(SqStack *s, SElemType e) {
 }
 
 Status Pop(SqStack *s, SElemType *e) {
-    // 如果栈不为空，则删除s的栈顶元素，用e返回其值，并返回OK；否则返回ERROR
+    // 否则返回ERROR
     if (s->top == s->base) {
         return ERROR;
     }
-    
+    // 如果栈不为空，则删除s的栈顶元素，用e返回其值，并返回OK；
     *e = *(s->top);
     s->top--;
     
@@ -101,8 +113,8 @@ void PrintfStack(SqStack *s) {
     }
     
     while(s->top > s->base) {
-        printf("%d\n",*s->base);
         s->base++;
+        printf("%d\n",*s->base);
     }
 }
 
@@ -120,7 +132,7 @@ Status SqStackEmpty(SqStack *s) {
  // 将十进制数转换成8进制数输出
 void conversion() {
     // 1.初始化栈
-     SqStack *stack = (SqStack *)malloc(sizeof(SqStack));
+    SqStack *stack = (SqStack *)malloc(sizeof(SqStack));
     InitStack(stack);
     
     // 2.输入一个十进制数
@@ -588,4 +600,62 @@ int result(SeqStack *numStack, SeqStackchar *operatorStack) {
     }
     
     return resultval;
+}
+
+#pragma mark - 汉诺塔问题
+
+/**
+ 汉诺塔函数
+ */
+void hanoiFunction() {
+    SqStack sa = createStack_Sq();
+    SqStack sb = createStack_Sq();
+    SqStack sc = createStack_Sq();
+    
+    int n = 6;
+    // 初始化sa
+    for (int i = n; i > 0; i--) {
+        Push(&sa, i);
+    }
+    
+    hanoi(n, &sa, &sb, &sc);
+    
+    PrintfStack(&sc);
+}
+
+/**
+ 将n个排好序（从上往下，升序）的数从a塔座移动到c塔座
+
+ @param n  n个数
+ @param sa a塔座
+ @param sb b塔座
+ @param sc c塔座
+ */
+void hanoi(int n, SqStack *sa, SqStack *sb, SqStack *sc) {
+    if (n == 1) {
+        moveFromAToB(sa, sc);
+    }
+    else {
+        // 1.先将n-1个圆盘从sa通过sc移动到sb
+        hanoi(n-1, sa, sc, sb);
+        // 2.再将第n个圆盘，移动到sc
+        moveFromAToB(sa, sc);
+        // 3.然后再将n-1个圆盘从sb移动到sc
+        hanoi(n-1, sb, sa, sc);
+    }
+}
+
+int moveFromAToB(SqStack *sa, SqStack *sb) {
+    if (sa->base == sa->top) {
+        printf("栈sa为空");
+        return 0;
+    }
+    else {
+        // 取出栈a的顶部元素出栈，然后入b栈
+        SElemType *e = (SElemType *)malloc(sizeof(SElemType));
+        Pop(sa, e);
+        Push(sb, *e);
+        
+        return 1;
+    }
 }

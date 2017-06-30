@@ -21,6 +21,8 @@
 typedef int Status;
 typedef int SElemType;
 
+#pragma mark - 顺序栈
+
 /**
  栈
  */
@@ -29,7 +31,8 @@ typedef struct {
     SElemType *base;
     int stactsize;
 }SqStack;// 顺序栈
-
+// 创建stack
+SqStack createStack_Sq();
 // 初始化
 Status InitStack(SqStack *s);
 
@@ -41,6 +44,7 @@ Status Push(SqStack *s, SElemType e);
 Status Pop(SqStack *s, SElemType *e);
 
 void PrintfStack(SqStack *s);
+
 #pragma mark - 顺序栈的应用
 
 // 数值转换
@@ -49,7 +53,7 @@ void conversion();
 // 括号匹配的检验
 Status MatchCheck(SqList s);
 
-// 迷宫
+#pragma mark - 迷宫
 
 /**
  位置
@@ -77,8 +81,6 @@ typedef struct {
     int stacksize;
 }MazeStack;
 
-
-
 Status Pass(PosType pos);
 void FootPrint(PosType pos);
 PosType NextPos(PosType curPos, int *i);
@@ -86,18 +88,17 @@ void MakePrint(PosType pos);
 Status MazePath(PosType start, PosType end);
 void printfMazePath(MazeStack *s);
 
-#pragma 多项式求值
+#pragma mark - 多项式求值
+
 //定义两个栈，一个存放数字，一个存放符号；
 
 //定义存储整型的栈
-typedef struct node
-{
+typedef struct node {
     int data[MAXSIZE];
     int top;
 }SeqStack;
 //定义存储字符型的栈
-typedef struct nodeb
-{
+typedef struct nodeb {
     char data[MAXSIZE];
     int top;
 }SeqStackchar;
@@ -107,5 +108,13 @@ int GetPriorityOfOperator(char c);
 int calculate(int a, int b, char operator);
 int calculationBtweenStack(SeqStack *a, SeqStackchar *b);
 int result(SeqStack *numStack, SeqStackchar *operatorStack);
+
+#pragma mark - 汉诺塔问题
+/**
+ 汉诺塔函数
+ */
+void hanoiFunction();
+void hanoi(int n, SqStack *sa, SqStack *sb, SqStack *sc);
+int moveFromAToB(SqStack *sa, SqStack *sb);
 
 #endif /* StackAndQueue_h */

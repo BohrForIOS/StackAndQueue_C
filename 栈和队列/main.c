@@ -51,25 +51,28 @@ int main(int argc, const char * argv[]) {
 //    else {
 //        printf("迷宫不能走出");
 //    }
-    SeqStack *seqStack = (SeqStack *)malloc(sizeof(seqStack));
     
-    if (!seqStack) {
-        printf("分配空间失败");
-    }
+    // 多项式计算
+//    SeqStack *seqStack = (SeqStack *)malloc(sizeof(seqStack));
+//    
+//    if (!seqStack) {
+//        printf("分配空间失败");
+//    }
+//    
+//    seqStack->top = -1;
+//    
+//    SeqStackchar *seqStackChar = (SeqStackchar *)malloc(sizeof(SeqStackchar));
+//    
+//    if (!seqStackChar) {
+//        printf("分配空间失败");
+//    }
+//    
+//    seqStackChar->top = -1;
+//    
+//    int resultValue =  result(seqStack, seqStackChar);
+//    printf("计算结果为%d\n", resultValue);
     
-    seqStack->top = -1;
-    
-    SeqStackchar *seqStackChar = (SeqStackchar *)malloc(sizeof(SeqStackchar));
-    
-    if (!seqStackChar) {
-        printf("分配空间失败");
-    }
-    
-    seqStackChar->top = -1;
-    
-    int resultValue =  result(seqStack, seqStackChar);
-    printf("计算结果为%d\n", resultValue);
-    
+    hanoiFunction();
     
     return 0;
 }

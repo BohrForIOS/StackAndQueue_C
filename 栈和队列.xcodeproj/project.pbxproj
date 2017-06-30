@@ -10,6 +10,7 @@
 		845BC3241F00A505001EF67B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 845BC3231F00A505001EF67B /* main.c */; };
 		845BC32C1F00A5C3001EF67B /* StackAndQueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 845BC32A1F00A5C3001EF67B /* StackAndQueue.c */; };
 		845BC32F1F00D5EE001EF67B /* SqList.c in Sources */ = {isa = PBXBuildFile; fileRef = 845BC32D1F00D5EE001EF67B /* SqList.c */; };
+		849FD94D1F0601A500C02096 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 849FD94B1F0601A500C02096 /* Queue.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		845BC32B1F00A5C3001EF67B /* StackAndQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackAndQueue.h; sourceTree = "<group>"; };
 		845BC32D1F00D5EE001EF67B /* SqList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SqList.c; sourceTree = "<group>"; };
 		845BC32E1F00D5EE001EF67B /* SqList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqList.h; sourceTree = "<group>"; };
+		849FD94B1F0601A500C02096 /* Queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		849FD94C1F0601A500C02096 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 				845BC3231F00A505001EF67B /* main.c */,
 				845BC32A1F00A5C3001EF67B /* StackAndQueue.c */,
 				845BC32B1F00A5C3001EF67B /* StackAndQueue.h */,
+				849FD94B1F0601A500C02096 /* Queue.c */,
+				849FD94C1F0601A500C02096 /* Queue.h */,
 				845BC32D1F00D5EE001EF67B /* SqList.c */,
 				845BC32E1F00D5EE001EF67B /* SqList.h */,
 			);
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845BC32C1F00A5C3001EF67B /* StackAndQueue.c in Sources */,
+				849FD94D1F0601A500C02096 /* Queue.c in Sources */,
 				845BC3241F00A505001EF67B /* main.c in Sources */,
 				845BC32F1F00D5EE001EF67B /* SqList.c in Sources */,
 			);
@@ -258,6 +264,7 @@
 				845BC3291F00A505001EF67B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
