@@ -45,4 +45,35 @@ typedef struct {
     int maxSize;
 }SqQueue;
 
+#pragma mark - 离散事件模拟
+
+#define TRUE 1
+#define FALSE 0
+#define OK 1
+#define ERROR 0
+#define INFEASIBLE -1
+#define OVERFLOW -2
+//Status是函数的类型，其值是函数结果状态码
+typedef int Status;
+
+//=================================  排队队列定义开始================================
+typedef struct{
+    int OccurTime;            //到达时间
+    int Duration;            //办理事务所需时间
+}CustomerNode;
+
+typedef CustomerNode ElemType;
+
+//结点定义
+typedef struct QNodeOfCustomer{
+    ElemType data;                //数据节点；
+    struct QNodeOfCustomer *next;            //结点的指针域
+}QNodeOfCustomer;
+
+//队列链定义
+typedef struct{
+    QNodeOfCustomer *front;                //队头指针
+    QNodeOfCustomer *rare;                //队尾指针
+}LinkQueue_DiscreteEvent;
+
 #endif /* Queue_h */

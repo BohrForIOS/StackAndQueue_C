@@ -145,3 +145,87 @@ void printfQueue_Sq(SqQueue *Q) {
         Q->front++;
     }
 }
+
+#pragma mark - 离散事件模拟
+
+//初始化一个空队列
+Status InitQueue_DiscreteEvent(LinkQueue_DiscreteEvent *Q) {
+    // 给头结点和尾结点开辟空间，并赋值
+    Q->front = Q->rare = (QNodeOfCustomer *)malloc(sizeof(QNodeOfCustomer));
+    // 如果开辟不成功，直接退出
+    if (!Q->front) {
+        exit(-1);
+    }
+    // 开辟成功，给头结点的指针域赋值NULL
+    Q->front->next = NULL;
+    
+    return OK;
+}
+
+//判断是否为空队列
+Status QueueEmpty_DiscreteEvent(LinkQueue_DiscreteEvent *Q) {
+    if (Q->front == Q->rare) {
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+//判断长度
+Status QueueLength_DiscreteEvent(LinkQueue_DiscreteEvent *Q) {
+    if (Q->front == Q->rare) {
+        return 0;
+    }
+    
+    int i = 0;
+    
+    QNodeOfCustomer *q = Q->front;
+    
+    if (q->next) {
+        q = q->next;
+        i++;
+    }
+    
+    return i;
+}
+//向队列尾部插入元素e
+Status EnQueue_DiscreteEvent(LinkQueue_DiscreteEvent *Q, ElemType e) {
+    // 生成结点
+    QNodeOfCustomer *q;
+    q = (QNodeOfCustomer *)malloc(sizeof(QNodeOfCustomer));
+    
+    if (!q) {
+        exit(-1);
+    }
+    
+    q->data = e;
+    q->next = NULL;
+    
+    // 将尾结点的指针域指向新结点
+    Q->rare->next = q;
+    // 修改尾指针指向
+    Q->rare = q;
+    return OK;
+}
+
+//删除队列头部元素并返回
+Status Dequeue(LinkQueue_DiscreteEvent *Q, ElemType *e) {
+    if (Q->front == Q->rare) {
+        return ERROR;
+    }
+    
+    // 令q为第一个结点
+    QNodeOfCustomer *q = Q->front->next;
+    *e = q->data;
+    // 修改头结点的指针域的指向第二个结点
+    Q->front->next = Q->front->next->next;
+    
+    // 释放第一个结点
+    if (!Q->front->next) {// 如果第二个结点不存在
+        Q->rare = Q->front;
+    }
+    
+    free(q);
+    
+    return OK;
+}
