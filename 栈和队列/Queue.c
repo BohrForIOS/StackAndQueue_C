@@ -229,3 +229,20 @@ Status Dequeue(LinkQueue_DiscreteEvent *Q, ElemType *e) {
     
     return OK;
 }
+
+//=================================  排队队列定义结束 ================================
+
+
+
+
+//=================================  事件链表定义开始 ================================
+
+void InitList_Event(LinkList L) {
+    L = (LinkList)malloc(sizeof(LNode)); // 生成新结点
+    
+    if (!L) {
+        exit(-1);
+    }
+    
+    L->next = NULL;
+}

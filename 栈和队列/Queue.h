@@ -76,4 +76,23 @@ typedef struct{
     QNodeOfCustomer *rare;                //队尾指针
 }LinkQueue_DiscreteEvent;
 
+//=================================  排队队列定义结束 ================================
+
+
+
+
+//=================================  事件链表定义开始 ================================
+typedef struct{
+    int OccurTime;// 客户到达时间
+    int NType;// 事件类型
+    int dur;// 等待时间
+}Event,EvElemType;
+
+typedef struct LNode{
+    EvElemType data;                //单链表中结点的数据域
+    struct LNode *next;                //结点的指针域
+}LNode,*LinkList;
+
+typedef LinkList EventList;
+
 #endif /* Queue_h */
