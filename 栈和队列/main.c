@@ -72,7 +72,16 @@ int main(int argc, const char * argv[]) {
 //    int resultValue =  result(seqStack, seqStackChar);
 //    printf("计算结果为%d\n", resultValue);
     
-    hanoiFunction();
+//    hanoiFunction();
+    
+    // 练习strcmp的实现
+//    char *ch1 = "abc";
+//    char *ch2 = "abe";
+//    int a = strcmpCompletion(ch1, ch2);
+//    printf("%d", a);
+    
+//    exerciseOne();
+    CPUHandleTask();
     
     return 0;
 }

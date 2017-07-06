@@ -95,4 +95,9 @@ typedef struct LNode{
 
 typedef LinkList EventList;
 
+int strcmpCompletion(const char *dest, const char *source);
+
+void exerciseOne();
+void CPUHandleTask();
+
 #endif /* Queue_h */
